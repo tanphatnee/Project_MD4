@@ -186,6 +186,9 @@
             margin-top: 10px;
             font-size: 13px;
         }
+        .btn-success{
+            width: 100px;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -213,39 +216,57 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>User name</th>
                     <th>Email</th>
-                    <th>Birthday</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>Trạng Thái</th>
+                    <th colspan="1">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${listUser}" var="user">
-                    <tr>
-                        <td>${user.userId}</td>
-                        <td>${user.userName}</td>
-                        <td>${user.email}</td>
-                        <td>${user.birthday}</td>
-                        <td>${user.phoneNumber}</td>
-                        <td>${user.address}</td>
-                        <td class="${user.userStatus?"btn-success":"btn-danger"}">${user.userStatus?"active":"blocked"}</td>
-                        <td>
-                            <c:if test="${!user.role}">
-                                <a href="<%=request.getContextPath()%>/showOrderController/orderUser?userId=${user.userId}"><i class="bi bi-bag-check"></i></a>
-                            </c:if>
-                        </td>
-                        <td>
-                            <c:if test="${!user.role}">
-                            <a href="<%=request.getContextPath()%>/userController/blockUser?id=${user.userId}"><i class="bi bi-lock"></i></a>
-                            </c:if>
-                        </td>
-                    </tr>
+                    <c:if test="${user.isRole() == 'USER'}">
+                        <tr>
+                            <td>${user.userId}</td>
+                            <td>${user.userName}</td>
+                            <td>${user.email}</td>
+                            <td colspan="1">
+                                <c:choose>
+                                    <c:when test="${user.userStatus}">
+                                        <div class="action-button khoa">
+                                            <div class="active_div">
+                                                Active
+                                            </div>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="action-button mo-khoa">
+                                            <div class="block_div">
+                                                Block
+                                            </div>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td  colspan="1">
+                                <c:choose>
+                                    <c:when test="${user.userStatus}">
+                                        <a href="<%=request.getContextPath()%>/userController/blockUser?id=${user.userId}">
+                                            <button class="btn btn-danger">Khoá</button>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="<%=request.getContextPath()%>/userController/unBlockUser?id=${user.userId}">
+                                            <button class="btn btn-success">Mở khoá</button>
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
                 </tbody>
+
             </table>
 
         </div>

@@ -1,7 +1,6 @@
 package ra.model.service.user;
 
 import ra.model.entity.User;
-import ra.model.service.user.IUserService;
 import ra.util.ConnectionDB;
 
 import java.sql.CallableStatement;
@@ -26,7 +25,7 @@ public class UserServiceIMPL implements IUserService {
                 user.setUserName(resultSet.getString("userName"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
-                user.setBirthday(resultSet.getDate("birthday"));
+                user.setBirthday(resultSet.getDate("birthdate"));
                 user.setPhoneNumber(resultSet.getString("phoneNumber"));
                 user.setAddress(resultSet.getString("address"));
                 user.setUserStatus(resultSet.getBoolean("status"));
@@ -107,7 +106,7 @@ call.executeUpdate();
                 user.setUserName(resultSet.getString("userName"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
-                user.setBirthday(resultSet.getDate("birthday"));
+                user.setBirthday(resultSet.getDate("birthdate"));
                 user.setPhoneNumber(resultSet.getString("phoneNumber"));
                 user.setAddress(resultSet.getString("address"));
                 user.setUserStatus(resultSet.getBoolean("status"));
@@ -197,4 +196,19 @@ call.executeUpdate();
         }
         return true;
     }
+    @Override
+    public boolean unblockUser(int id) {
+        Connection conn = null;
+        try {
+            conn = ConnectionDB.getConnection();
+            CallableStatement call = conn.prepareCall("{call PROC_unblockUser(?)}"); // Thay đổi tên thủ tục
+            call.setInt(1, id);
+            call.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+        return true;
+    }
+
 }

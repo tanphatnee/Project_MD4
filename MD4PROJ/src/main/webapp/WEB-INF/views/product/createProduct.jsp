@@ -73,14 +73,25 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
+        #catalogId{
+            width: 100%;
+            height: 37px;
+            margin-bottom: 10px;
+        }
+        #status{
+            width: 100%;
+            height: 37px;
+            margin-bottom: 10px;
+        }
     </style>
+
 </head>
 <body>
 <div class="container">
     <h1>Thêm mới sản phẩm</h1>
     <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/productController/add" >
         <label for="productName">Product name</label>
-        <input id="productName" name="productName" type="text" >
+        <input id="productName" name="productName" type="text" value="${product.productId}">
 
         <label for="price">Price</label>
         <input type="number" id="price" name="price">
@@ -93,7 +104,12 @@
         <label >image</label>
         <input type="file" name="image">
         <label for="catalogId">CatalogId</label>
-        <input type="number"  id="catalogId" name="catalogId">
+        <select id="catalogId" name="catalogId">
+            <option value=""></option>
+            <c:forEach items="${listCatalog}" var="catalog">
+                <option value="${catalog.catalogId}">${catalog.catalogName}</option>
+            </c:forEach>
+        </select>
         <label for="status">Status</label>
         <select name="status" id="status">
             <option value="1">true</option>

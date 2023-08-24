@@ -86,7 +86,7 @@
 </nav>
 <!-- END nav -->
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -122,7 +122,7 @@
                             <input type="hidden" name="productId" value="${cartItem.productId}">
                             <td>${count.count}</td>
                             <td>
-                                <div class="img" style="background-image: url(/images/${cartItem.image});"></div>
+                                <img src="/upload/${cartItem.image}" alt="">
                             </td>
                             <td>
                                 <div class="email">

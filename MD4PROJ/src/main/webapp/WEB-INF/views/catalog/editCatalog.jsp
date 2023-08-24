@@ -76,17 +76,17 @@
 </head>
 <body>
 <div class="container">
-    <h2>Update Product</h2>
+    <h2>Chỉnh sửa danh mục</h2>
     <form method="post" enctype="multipart/form-data" action="/catalogController/update">
-        <label for="id">#</label>
+        <label for="id">ID Catalog</label>
         <input type="number"  id="id" name="catalogId" value="${editCatalog.catalogId}" readonly>
 
-        <label for="name">Product Name</label>
+        <label for="name">Catalog Name</label>
         <input id="name" type="text" name="catalogName" value="${editCatalog.catalogName}">
 
-        <label for="description">Price</label>
+        <label for="description">Description</label>
         <input type="text" id="description" name="description" value="${editCatalog.description}">
-        <label for="country">Description</label>
+        <label for="country">Country</label>
         <input type="text" id="country" name="country" value="${editCatalog.country}">
         <div class="form-group">
             <label for="image">Image</label>

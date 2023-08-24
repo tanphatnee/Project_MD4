@@ -57,20 +57,20 @@
         <c:if test="${userLogin!=null}">
             <a class="navbar-brand" href="<%=request.getContextPath()%>/homeController/getAll?userId=${userLogin.userId}">Liquor <span>store</span></a>
         </c:if>
-         <c:if test="${userLogin==null}">
-        <a class="navbar-brand" href="<%=request.getContextPath()%>/homeController/goHome">Liquor <span>store</span></a>
-         </c:if>
-             <div class="order-lg-last btn-group">
+        <c:if test="${userLogin==null}">
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/homeController/goHome">Liquor <span>store</span></a>
+        </c:if>
+        <div class="order-lg-last btn-group">
             <c:if test="${userLogin!=null}">
                 <c:if test="${userLogin.userStatus==true}">
-                <a href="<%=request.getContextPath()%>/cartItemController/getAll?userId=${userLogin.userId}&message=''"
-                   class="btn-cart dropdown-toggle dropdown-toggle-split">
+                    <a href="<%=request.getContextPath()%>/cartItemController/getAll?userId=${userLogin.userId}&message=''"
+                       class="btn-cart dropdown-toggle dropdown-toggle-split">
 
-                    <span class="flaticon-shopping-bag"></span>
+                        <span class="flaticon-shopping-bag"></span>
 
-                    <div class="d-flex justify-content-center align-items-center"><small
-                            style="color: red">${count}</small></div>
-                </a></c:if>
+                        <div class="d-flex justify-content-center align-items-center"><small
+                                style="color: red">${count}</small></div>
+                    </a></c:if>
             </c:if>
         </div>
 
@@ -81,17 +81,17 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-<%--                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>--%>
-<%--                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--%>
+                <%--                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>--%>
+                <%--                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--%>
                 <c:if test="${userLogin!=null}">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">${userLogin.userName}</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="<%=request.getContextPath()%>/showOrderController/orderUser?userId=${userLogin.userId}">Orders</a>
-                        <a class="dropdown-item" href="<%=request.getContextPath()%>/userController/logout">Log Out</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">${userLogin.userName}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/showOrderController/orderUser?userId=${userLogin.userId}">Orders</a>
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/userController/logout">Log Out</a>
+                        </div>
+                    </li>
                 </c:if>
             </ul>
         </div>
@@ -193,7 +193,7 @@
                 <div class="col-lg-2 col-md-4 ">
                     <div class="sort w-100 text-center ftco-animate">
                         <a href="<%=request.getContextPath()%>/productController/searchByCatalogId?catalogId=${catalog.catalogId}"><div
-                             class="img" style="background-image: url(/images/${catalog.image});"></div></a>
+                                class="img" style="background-image: url(/images/${catalog.image});"></div></a>
                         <h3>${catalog.catalogName}</h3>
                     </div>
                 </div>
@@ -214,49 +214,49 @@
         <div class="row">
 
             <c:forEach items="${listProduct}" var="product">
-            <div class="col-md-3 d-flex">
-                <div class="product ftco-animate">
-                    <div class="img d-flex align-items-center justify-content-center"
-                         style="background-image: url(/images/${product.image});">
-                        <div class="desc">
-                            <p class="meta-prod d-flex">
-                                <c:if test="${userLogin!=null}">
-                                <c:if test="${userLogin.userStatus==true}">
-                                    <a href="<%=request.getContextPath()%>/cartItemController/create?userId=${userLogin.userId}&productId=${product.productId}"
-                                       class="d-flex align-items-center justify-content-center"><span
-                                            class="flaticon-shopping-bag"></span></a>
-                                    <a href="<%=request.getContextPath()%>/productController/setHeart?productId=${product.productId}&userId=${userLogin.userId}" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                                    <a href="<%=request.getContextPath()%>/productController/showDetail?productId=${product.productId}&userId=${userLogin.userId}" class="d-flex align-items-center justify-content-center"><span
-                                            class="flaticon-visibility"></span></a>
-                                </c:if>
-                                </c:if>
+                <div class="col-md-3 d-flex">
+                    <div class="product ftco-animate">
+                        <div class="img d-flex align-items-center justify-content-center"
+                             style="background-image: url(/upload/${product.image});">
+                            <div class="desc">
+                                <p class="meta-prod d-flex">
+                                    <c:if test="${userLogin!=null}">
+                                        <c:if test="${userLogin.userStatus==true}">
+                                            <a href="<%=request.getContextPath()%>/cartItemController/create?userId=${userLogin.userId}&productId=${product.productId}"
+                                               class="d-flex align-items-center justify-content-center"><span
+                                                    class="flaticon-shopping-bag"></span></a>
+                                            <a href="<%=request.getContextPath()%>/productController/setHeart?productId=${product.productId}&userId=${userLogin.userId}" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                            <a href="<%=request.getContextPath()%>/productController/showDetail?productId=${product.productId}&userId=${userLogin.userId}" class="d-flex align-items-center justify-content-center"><span
+                                                    class="flaticon-visibility"></span></a>
+                                        </c:if>
+                                    </c:if>
 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="text text-center">
+                            <span class="sale" style="background-color: white"><i style="font-size:24px;color:red" class="fa">&#xf004;</i><p style="color: #0b2e13">${product.heart}</p></span>
+
+                            <c:forEach items="${listCatalog}" var="catalog">
+                                <c:if test="${product.catalogId==catalog.catalogId}">
+                                    <span class="category">${catalog.catalogName}</span>
+                                </c:if>
+                            </c:forEach>
+                            <h2>${product.productName}</h2>
+                            <p class="mb-0"> <span
+                                    class="price">$${product.price}</span>
                             </p>
                         </div>
                     </div>
-                    <div class="text text-center">
-                        <span class="sale" style="background-color: white"><i style="font-size:24px;color:red" class="fa">&#xf004;</i><p style="color: #0b2e13">${product.heart}</p></span>
-
-                        <c:forEach items="${listCatalog}" var="catalog">
-                            <c:if test="${product.catalogId==catalog.catalogId}">
-                                <span class="category">${catalog.catalogName}</span>
-                            </c:if>
-                        </c:forEach>
-                        <h2>${product.productName}</h2>
-                        <p class="mb-0"> <span
-                                class="price">$${product.price}</span>
-                        </p>
-                    </div>
                 </div>
-            </div>
-                </c:forEach>
+            </c:forEach>
         </div>
         <div class="row justify-content-center">
             <c:if test="${userLogin!=null}">
-            <div class="col-md-4">
-                <a href="<%=request.getContextPath()%>/productController/showListProduct?userId=${userLogin.userId}" class="btn btn-primary d-block">View All Products <span
-                        class="fa fa-long-arrow-right"></span></a>
-            </div>
+                <div class="col-md-4">
+                    <a href="<%=request.getContextPath()%>/productController/showListProduct?userId=${userLogin.userId}" class="btn btn-primary d-block">View All Products <span
+                            class="fa fa-long-arrow-right"></span></a>
+                </div>
             </c:if>
         </div>
     </div>

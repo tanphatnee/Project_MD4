@@ -77,7 +77,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Thêm mới sản phẩm</h1>
+    <h1>Thêm mới danh mục</h1>
     <form method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/catalogController/add">
         <label for="catalogName">Catalog name</label>
         <input id="catalogName" name="catalogName" type="text" />

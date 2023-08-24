@@ -13,7 +13,7 @@ public class User {
     private String phoneNumber;
     private String address;
     private boolean userStatus = true;
-    private String role = "USER";
+    private String role  = "USER";
 
     public User() {
     }

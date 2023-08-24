@@ -101,6 +101,11 @@ return "order";
         userServiceIMPL.blockUser(id);
         return "redirect:getAll";
     }
+    @GetMapping("unBlockUser")
+    public String UnblockUser(@RequestParam("id") int id){
+        userServiceIMPL.unblockUser(id);
+        return "redirect:getAll";
+    }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().removeAttribute("userLogin");

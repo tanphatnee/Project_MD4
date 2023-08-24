@@ -73,28 +73,35 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
+        #status{
+            width: 100%;
+            height: 37px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h2>Update Product</h2>
     <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/productController/update">
-        <label for="id">#</label>
-        <input type="text"  id="id" name="productId" value="${editProduct.productId}">
-
+        <input type="hidden"  id="productId" name="productId" value="${editProduct.productId}" >
         <label for="name">Product Name</label>
         <input id="name" type="text" name="productName" value="${editProduct.productName}">
-
         <label for="price">Price</label>
         <input type="number" id="price" name="price" value="${editProduct.price}">
-        <label for="price">Price</label>
+        <label for="price">Quantity</label>
         <input type="number" id="quantity" name="quantity" value="${editProduct.quantity}">
         <label for="description">Description</label>
         <input type="text" id="description" name="description" value="${editProduct.description}">
         <label>Image</label>
         <input type="file" name="image" value="${editProduct.image}">
-        <label for="catalogId">CatalogId</label>
-        <input type="text" id="catalogId" name="catalogId" value="${editProduct.catalogId}">
+        <lable for="catalogId">CatalogId</lable>
+        <select id="catalogId" name="catalogId" >
+            ${editProduct.catalogId}
+            <c:forEach items="${listCatalog}" var="catalog">
+                <option value="${catalog.catalogId}">${catalog.catalogName}</option>
+            </c:forEach>
+        </select>
         <label for="status">Status</label>
         <select name="status" id="status">${editProduct.status}
             <option value="true">true</option>

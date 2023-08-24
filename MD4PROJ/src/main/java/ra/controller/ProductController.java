@@ -44,6 +44,10 @@ public class ProductController {
         productServiceIMPL.deleteById(id);
         return "redirect:getAll";
     }
+//    @GetMapping("getAllCatalog")
+//    public String findCatalog(){
+//
+//    }
     @GetMapping("/edit")
     public ModelAndView edit(@RequestParam int id){
         ModelAndView modelAndView = new ModelAndView("product/editProduct");
@@ -52,31 +56,34 @@ public class ProductController {
         return modelAndView;
     }
     @PostMapping("/add")
-    public String add(@ModelAttribute("newCatalog") FakeProduct fakeProduct) throws IOException {
-
+    public String add(@ModelAttribute("newProduct") FakeProduct fakeProduct) throws IOException {
         String fileName = fakeProduct.getImage().getOriginalFilename();
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
+        File uploadPro = new File(uploadPath);
+        if (!uploadPro.exists()) {
+            uploadPro.mkdirs();
         }
         try {FileCopyUtils.copy(fakeProduct.getImage().getBytes(),new File(uploadPath+fileName) );
         }catch (IOException e){
-
         }
-        String img= String.valueOf(fileName);
-//        Catalog catalog = new Catalog( fakeProduct.getProductName(), fakeProduct.getDescription(),fakeProduct.getImage());
-//        catalogServiceIMPL.save(catalog);
-        return "redirect:/catalogController/getAll"; // Đảm bảo URL đúng để chuyển hướng
+        String imgPro= String.valueOf(fileName);
+        Product product = new Product(fakeProduct.getProductId(), fakeProduct.getProductName(),fakeProduct.getPrice(), fakeProduct.getQuantity(), fakeProduct.getDescription(),imgPro,fakeProduct.getCatalogId(), fakeProduct.isStatus(), fakeProduct.getHeart());
+        productServiceIMPL.save(product);
+        return "redirect:/productController/getAll";
     }
     @PostMapping("/update")
-    public String update(@ModelAttribute("updateProduct") FakeProduct fakeProduct,@RequestParam("image") MultipartFile image,Model model) throws IOException {
-        String uploadPath = "C:\\Users\\nvtph\\OneDrive\\Máy tính\\project_modul4-master\\src\\main\\resources\\assets\\images";
-        String fileName = image.getOriginalFilename();
-        File file = new File(uploadPath);
-        FileCopyUtils.copy(image.getBytes(),new File(uploadPath+File.separator + fileName));
+    public String update(@ModelAttribute("editProduct") FakeProduct fakeProduct) throws IOException {
+        String fileName = fakeProduct.getImage().getOriginalFilename();
+        File fileUpdate = new File(uploadPath);
+        if (!fileUpdate.exists()) {
+            fileUpdate.mkdirs();
+        }
+        try {FileCopyUtils.copy(fakeProduct.getImage().getBytes(),new File(uploadPath+File.separator+fileName) );
+        }catch (IOException ignored){
+        }
+
+        String imgUpdate = String.valueOf(fileName);
         Product product = new Product(fakeProduct.getProductId(), fakeProduct.getProductName(),
-                fakeProduct.getPrice(),fakeProduct.getQuantity(),fakeProduct.getDescription(),
-                fileName,fakeProduct.getCatalogId(),fakeProduct.isStatus(), fakeProduct.getHeart());
+                    fakeProduct.getPrice(),fakeProduct.getQuantity(), fakeProduct.getDescription(),imgUpdate,fakeProduct.getCatalogId(),fakeProduct.getHeart());
         productServiceIMPL.update(product);
         return "redirect:getAll";
     }

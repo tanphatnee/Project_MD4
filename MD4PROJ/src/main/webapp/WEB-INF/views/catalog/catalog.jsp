@@ -200,7 +200,7 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Catalog <b>Management</b></h2>
-                        <h3><a href="<%=request.getContextPath()%>/adminController/goAdmin"><b>Admin</b></a></h3>
+                        <h3><a href="<%=request.getContextPath()%>/adminController/goAdmin"><b style="color: #0f6674">Admin</b></a></h3>
                     </div>
                     <div class="col-sm-7">
                         <a href="<%=request.getContextPath()%>/catalogController/create" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Catalog</span></a>
@@ -210,7 +210,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>IdCatalog</th>
                     <th>image</th>
                     <th>Catalog name</th>
                     <th>Catalog description</th>
@@ -222,13 +222,12 @@
                 <c:forEach items="${listCatalog}" var="catalog">
                     <tr>
                         <td>${catalog.catalogId}</td>
-                        <td><img src="/upload/${catalog.image}" alt="" style="background-image: "></td>
+                        <td><img src="/upload/${catalog.image}" alt=""  style="width: 70px; height: 70px; object-fit: cover;"></td>
                         <td>${catalog.catalogName}</td>
                         <td>${catalog.description}</td>
                         <td>${catalog.country}</td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/catalogController/edit?id=${catalog.catalogId}" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                            <a href="<%=request.getContextPath()%>/catalogController/delete?id=${catalog.catalogId}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <a href="<%=request.getContextPath()%>/catalogController/edit?id=${catalog.catalogId}" class="settings" title="Chỉnh sửa danh mục" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                         </td>
                     </tr>
                 </c:forEach>

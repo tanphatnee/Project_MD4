@@ -51,7 +51,6 @@ public class CatalogController {
     }
     @PostMapping("/add")
     public String add(@ModelAttribute("newCatalog") CatalogFake catalogFake) throws IOException {
-
         String fileName = catalogFake.getImage().getOriginalFilename();
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
@@ -59,7 +58,6 @@ public class CatalogController {
         }
         try {FileCopyUtils.copy(catalogFake.getImage().getBytes(),new File(uploadPath+fileName) );
         }catch (IOException e){
-
         }
         String img= String.valueOf(fileName);
         Catalog catalog = new Catalog( catalogFake.getCatalogName(), catalogFake.getDescription(), catalogFake.getCountry(), img);
@@ -68,14 +66,18 @@ public class CatalogController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute("updateCatalog") CatalogFake catalogFake, @RequestParam("image") MultipartFile image,Model model) throws IOException {
-        String uploadPath = "C:\\Users\\nvtph\\OneDrive\\Máy tính\\project_modul4-master\\src\\main\\resources\\assets\\images";
-
-        String fileName = image.getOriginalFilename();
-        File file = new File(uploadPath);
-        FileCopyUtils.copy(image.getBytes(),new File(uploadPath+File.separator + fileName));
+    public String update(@ModelAttribute("updateCatalog") CatalogFake catalogFake) throws IOException {
+        String fileName = catalogFake.getImage().getOriginalFilename();
+        File fileUpdate = new File(uploadPath);
+        if (!fileUpdate.exists()) {
+            fileUpdate.mkdirs();
+        }
+        try {FileCopyUtils.copy(catalogFake.getImage().getBytes(),new File(uploadPath+File.separator+fileName) );
+        }catch (IOException ignored){
+        }
+        String imgUpdate = String.valueOf(fileName);
         Catalog catalog = new Catalog(catalogFake.getCatalogId(), catalogFake.getCatalogName(),
-                catalogFake.getDescription(),catalogFake.getCountry(),fileName);
+                catalogFake.getDescription(),catalogFake.getCountry(),imgUpdate);
         catalogServiceIMPL.update(catalog);
         return "redirect:getAll";
     }

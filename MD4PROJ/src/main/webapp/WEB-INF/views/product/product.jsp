@@ -138,6 +138,7 @@
             line-height: 10px;
         }
         .text-success {
+            font-size: 16px;
             color: #10c469;
         }
         .text-info {
@@ -148,6 +149,7 @@
         }
         .text-danger {
             color: #ff5b5b;
+            font-size: 16px;
         }
         .pagination {
             float: right;
@@ -224,7 +226,6 @@
                     <th>image</th>
                     <th>CatalogId</th>
                     <th>Status</th>
-                    <th><i style="font-size:24px;color:red" class="fa">&#xf004;</i></th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -236,17 +237,21 @@
                         <td>${product.price}</td>
                         <td>${product.quantity}</td>
                         <td>${product.description}</td>
-                        <td> <div class="img" style="background-image: url(/images/${product.image});"></div></td>
+                        <td><img src="/upload/${product.image}" alt=""></td>
                         <td>${product.catalogId}</td>
-                        <c:if test="${product.quantity!=0}">
-                            <td class="btn-success">but sell</td>
-                        </c:if>
-                        <c:if test="${product.quantity==0}">
-                        <td class="btn-danger">out of stock</td>
-                        </c:if>
-                        <td>${product.heart}</td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/productController/edit?id=${product.productId}" class="settings" title="Settings" data-toggle="tooltip"><i class="bi bi-pencil-fill"></i></a>
+                            <c:choose>
+                                <c:when test="${product.quantity != 0}">
+                                    <span class="status text-success">Còn hàng</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="status text-danger">Hết hàng</span>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+
+                        <td>
+                            <a href="<%=request.getContextPath()%>/productController/edit?id=${product.productId}" class="settings" title="Chỉnh sửa thông tin" data-toggle="tooltip"><i class="bi bi-pencil-fill"></i></a>
                             <a href="<%=request.getContextPath()%>/productController/delete?id=${product.productId}" class="delete" title="Delete" data-toggle="tooltip"><i class="bi bi-trash3-fill"></i></a>
                         </td>
                     </tr>

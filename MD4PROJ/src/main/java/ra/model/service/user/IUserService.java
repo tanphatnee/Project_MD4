@@ -8,4 +8,6 @@ public interface IUserService extends IGeneric<User> {
     boolean checkExistName(String userName);
     boolean checkExistEmail(String email);
     boolean blockUser(int id);
+
+    boolean unblockUser(int id);
 }

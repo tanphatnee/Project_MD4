@@ -1,5 +1,6 @@
 package ra.model.service.product;
 
+import ra.model.entity.FakeProduct;
 import ra.model.entity.Product;
 import ra.model.service.catalog.CatalogServiceIMPL;
 import ra.util.ConnectionDB;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class ProductServiceIMPL implements IProductService {
     CatalogServiceIMPL catalogServiceIMPL = new CatalogServiceIMPL();
+
     @Override
     public List findAll() {
 
@@ -65,7 +67,6 @@ public class ProductServiceIMPL implements IProductService {
 
     @Override
     public boolean update(Product product) {
-
         Connection conn = null;
         try {
             conn = ConnectionDB.getConnection();
@@ -83,7 +84,6 @@ public class ProductServiceIMPL implements IProductService {
             e.printStackTrace();
             return false;
         }
-
         return true;
     }
 

@@ -11,10 +11,21 @@ public class Product {
     private boolean status;
     private int heart;
 
+    public Product(int productId, String productName, float price, int quantity, String description, String imgUpdate, int catalogId, int heart) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.image = imgUpdate;
+        this.catalogId = catalogId;
+        this.heart = heart;
+    }
+
     public Product() {
     }
 
-    public Product(int productId, String productName, float price, int quantity,String description, String image, int catalogId,boolean status,int heart) {
+    public Product(int productId, String productName, float price, int quantity, String description, String image, int catalogId, boolean status, int heart) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
