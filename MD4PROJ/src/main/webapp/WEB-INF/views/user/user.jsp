@@ -169,7 +169,7 @@
             color: #666;
         }
         .pagination li.active a, .pagination li.active a.page-link {
-            background: #03A9F4;
+            background: #bad9e8;
         }
         .pagination li.active a:hover {
             background: #0397d6;
@@ -189,6 +189,9 @@
         .btn-success{
             width: 100px;
         }
+        a{
+            color: #606060;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -204,9 +207,9 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>User <b>Management</b></h2>
-                        <h3><a href="<%=request.getContextPath()%>/adminController/getAll" class="brand">
-                            Admin
-                        </a></h3>
+                        <h4><a href="<%=request.getContextPath()%>/adminController/getAll" class="brand">
+                            Back To Admin
+                        </a></h4>
                     </div>
                     <div class="col-sm-5">
 

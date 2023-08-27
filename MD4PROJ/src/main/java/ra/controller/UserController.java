@@ -64,28 +64,35 @@ public class UserController {
         }
     }
     @PostMapping("login")
-    public String login(@RequestParam String userName,@RequestParam String password, Model model, HttpServletRequest request){
+    public String login(@RequestParam String userName, @RequestParam String password, Model model, HttpServletRequest request) {
 
-        if (userName.trim().equals("")||password.trim().equals("")){
-            model.addAttribute("login","userName,password is required");
+        if (userName.trim().equals("") || password.trim().equals("")) {
+            model.addAttribute("login", "userName, password is required");
             return "user/login";
         }
-        User userLogin = userServiceIMPL.login(new User(userName,password));
-        if (userLogin==null) {
-            model.addAttribute("login","Account does not exist!");
+
+        User userLogin = userServiceIMPL.login(new User(userName, password));
+
+        if (userLogin == null) {
+            model.addAttribute("login", "Account does not exist!");
             return "user/login";
         } else {
-            request.getSession().setAttribute("userLogin",userLogin);
-            if (userLogin.isRole().equals("ADMIN")){
-                model.addAttribute("userId",userLogin.getUserId());
-                return "redirect:/adminController/getAll";
+            if (!userLogin.isUserStatus()) {
+                model.addAttribute("login", "Your account has been locked");
+                return "user/login";
             }
-            else {
-                model.addAttribute("userId",userLogin.getUserId());
+
+            request.getSession().setAttribute("userLogin", userLogin);
+            if (userLogin.isRole().equals("ADMIN")) {
+                model.addAttribute("userId", userLogin.getUserId());
+                return "redirect:/adminController/getAll";
+            } else {
+                model.addAttribute("userId", userLogin.getUserId());
                 return "redirect:/homeController/getAll";
             }
         }
     }
+
     @PostMapping("update")
     public String update(@ModelAttribute("userLogin") User user,@RequestParam("userId") int userId,@RequestParam("total") float total,Model model){
    userServiceIMPL.update(user);

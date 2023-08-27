@@ -6,6 +6,7 @@ import ra.util.ConnectionDB;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,20 +110,22 @@ return false;
     }
 
     @Override
-    public boolean productExist(int userId,int productId) {
+    public boolean productExist(int userId, int productId) {
         Connection conn = null;
         try {
             conn = ConnectionDB.getConnection();
-            CallableStatement call = conn.prepareCall("{call proc_productExist(?,?)}");
-            call.setInt(1,userId);
-            call.setInt(2,productId);
+            CallableStatement call = conn.prepareCall("{call proc_productExist(?,?,?)}");
+            call.setInt(1, userId);
+            call.setInt(2, productId);
+            call.registerOutParameter(3, Types.TINYINT);
             call.executeUpdate();
-        } catch (Exception e){
+            return call.getBoolean(3);
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
+
 
     @Override
     public boolean setQuantity(int userId, int productId, int quantity) {
@@ -147,12 +150,11 @@ return false;
         float sum = 0;
         try {
             conn = ConnectionDB.getConnection();
-            CallableStatement call = conn.prepareCall("{call PROC_totalCart(?)}");
+            CallableStatement call = conn.prepareCall("{call PROC_totalCart(?,?)}");
             call.setInt(1,userId);
-            ResultSet resultSet = call.executeQuery();
-            while (resultSet.next()){
-sum = resultSet.getFloat("total");
-            }
+            call.registerOutParameter(2, Types.FLOAT);
+           call.execute();
+           sum = call.getFloat(2);
         } catch (Exception e){
             e.printStackTrace();
         }

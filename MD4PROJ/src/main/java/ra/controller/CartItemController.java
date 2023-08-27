@@ -48,6 +48,7 @@ public class CartItemController {
         Product product = productServiceIMPL.findById(productId);
         CartItem cartItem = new CartItem(userId, productId, product.getImage(), product.getProductName(), product.getPrice(), 1, 1);
         boolean check = true;
+        //ược sử dụng để kiểm tra xem một sản phẩm cụ thể đã tồn tại trong giỏ hàng của người dùng hay chưa
 String message = "";
         for (CartItem cart : itemList) {
             if (cart.getProductId() == cartItem.getProductId() && cart.getUserId() == cartItem.getUserId()) {
@@ -64,7 +65,6 @@ String message = "";
         @GetMapping("/checkout")
             public String checkout ( @RequestParam("userId") int userId,@RequestParam("total") float total){
             int orderId = orderServiceIMPL.create(userId);
-            System.out.println("orderId=============>" + orderId);
 boolean check = false;
             List<CartItem> cartItemList = cartItemServiceIMPL.showAll(userId);
             for (CartItem cartItem: cartItemList) {

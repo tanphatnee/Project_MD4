@@ -23,7 +23,14 @@ public class User {
         this.password = password;
     }
 
-    public User(String userName, String email, String password) {
+
+    public User(String userName, String email, String password ,Boolean userStatus) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.userStatus = userStatus;
+    }
+    public User(String userName, String email, String password ) {
         this.userName = userName;
         this.email = email;
         this.password = password;

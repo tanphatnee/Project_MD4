@@ -77,6 +77,14 @@
             width: 100%;
             height: 37px;
             margin-bottom: 20px;
+            border: 1px solid #bdbdbd;
+            border-radius: 2%;
+        }
+        #catalogId{  width: 100%;
+            height: 37px;
+            margin-bottom: 20px;
+            border: 1px solid #b3b3b3;
+            border-radius: 2%;
         }
     </style>
 </head>
@@ -93,7 +101,9 @@
         <input type="number" id="quantity" name="quantity" value="${editProduct.quantity}">
         <label for="description">Description</label>
         <input type="text" id="description" name="description" value="${editProduct.description}">
-        <label>Image</label>
+        <label>Old URL Image</label>
+        <input type="text" value="${editProduct.image}" readonly>
+        <label>New URL Image</label>
         <input type="file" name="image" value="${editProduct.image}">
         <lable for="catalogId">CatalogId</lable>
         <select id="catalogId" name="catalogId" >

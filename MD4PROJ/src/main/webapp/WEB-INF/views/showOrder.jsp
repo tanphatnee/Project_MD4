@@ -216,7 +216,7 @@
           <th>ProductName</th>
           <th>price</th>
           <th>Quantity</th>
-          <th>Date Order</th>
+          <th>DateOrder</th>
         </tr>
         </thead>
         <tbody>
@@ -239,6 +239,7 @@
 
     </div>
   </div>
+</div>
 </div>
 </body>
 </html>

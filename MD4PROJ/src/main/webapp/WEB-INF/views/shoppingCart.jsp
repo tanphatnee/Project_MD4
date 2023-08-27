@@ -30,6 +30,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        .imgUploat{
+            width: 100px;
+            height:100px;
+        }
+    </style>
 </head>
 <body>
 
@@ -122,7 +128,7 @@
                             <input type="hidden" name="productId" value="${cartItem.productId}">
                             <td>${count.count}</td>
                             <td>
-                                <img src="/upload/${cartItem.image}" alt="">
+                                <img class="imgUploat" src="/upload/${cartItem.image}" alt="">
                             </td>
                             <td>
                                 <div class="email">

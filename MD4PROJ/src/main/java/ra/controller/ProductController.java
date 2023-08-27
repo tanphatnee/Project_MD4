@@ -44,10 +44,6 @@ public class ProductController {
         productServiceIMPL.deleteById(id);
         return "redirect:getAll";
     }
-//    @GetMapping("getAllCatalog")
-//    public String findCatalog(){
-//
-//    }
     @GetMapping("/edit")
     public ModelAndView edit(@RequestParam int id){
         ModelAndView modelAndView = new ModelAndView("product/editProduct");

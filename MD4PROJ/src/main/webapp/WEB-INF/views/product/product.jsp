@@ -191,6 +191,9 @@
         img {
             width: 50px;
         }
+        a{
+            color: #606060;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -206,12 +209,11 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Product <b>Management</b></h2>
-                        <h3><a href="<%=request.getContextPath()%>/adminController/goAdmin"><b>Admin</b></a></h3>
+                        <h4><a href="<%=request.getContextPath()%>/adminController/goAdmin"><b>Back To Admin</b></a></h4>
                     </div>
 
                     <div class="col-sm-7">
                         <a href="<%=request.getContextPath()%>/productController/create" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                        <input type="text" name="searchName" placeholder="Search by name..."/>
                     </div>
                 </div>
             </div>

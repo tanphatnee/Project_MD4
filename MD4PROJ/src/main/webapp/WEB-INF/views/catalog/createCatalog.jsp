@@ -73,6 +73,13 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
+        #status{
+            width: 100%;
+            height: 37px;
+            margin-bottom: 20px;
+            border: 1px solid #bdbdbd;
+            border-radius: 2%;
+        }
     </style>
 </head>
 <body>

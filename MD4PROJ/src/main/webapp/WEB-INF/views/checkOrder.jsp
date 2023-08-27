@@ -220,7 +220,7 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Orders <b>Management</b></h2>
-                        <h3><a href="<%=request.getContextPath()%>/adminController/getAll">Admin</a></h3>
+                        <h3><a href="<%=request.getContextPath()%>/adminController/getAll">Back To Admin</a></h3>
                     </div>
                 </div>
             </div>

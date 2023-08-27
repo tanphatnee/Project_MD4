@@ -25,9 +25,9 @@
 
 <!-- SIDEBAR -->
 <section id="sidebar">
-    <a href="#" class="brand">
+    <h2 href="#" class="brand">
         <span class="text">ADMIN</span>
-    </a>
+    </h2>
     <ul class="side-menu top">
         <li class="active">
             <a href="#">
@@ -56,12 +56,6 @@
     </ul>
     <ul class="side-menu">
         <li>
-            <a href="#">
-                <i class='bx bxs-cog' ></i>
-                <span class="text">Settings</span>
-            </a>
-        </li>
-        <li>
             <a href="<%=request.getContextPath()%>/userController/logout" class="logout">
                 <i class='bx bxs-log-out-circle' ></i>
                 <span class="text">Logout</span>
@@ -75,38 +69,10 @@
 
 <!-- CONTENT -->
 <section id="content">
-    <!-- NAVBAR -->
-    <nav>
-
-        <div class="dropdown">
-                <a href="#" class="notification dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class='bx bxs-bell' ></i>
-                    <span class="num">${countTrue}</span>
-                </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                <c:forEach items="${listOrders}" var="order">
-                    <li><a class="dropdown-item active" href="<%=request.getContextPath()%>/adminController/showOrder?orderId=${order.orderId}">OrderId : ${order.orderId}</a></li>
-                </c:forEach>
-            </ul>
-        </div>
-
-    </nav>
-    <!-- NAVBAR -->
-
-    <!-- MAIN -->
     <main>
         <div class="head-title">
             <div class="left">
                 <h1>Dashboard</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right' ></i></li>
-                    <li>
-                        <a class="active" href="#">Home</a>
-                    </li>
-                </ul>
             </div>
         </div>
 
@@ -114,8 +80,8 @@
             <li>
                 <i class='bx bxs-group' ></i>
                 <span class="text">
-						<h3><a href="#">${count} order</a></h3>
-						<p><a href="<%=request.getContextPath()%>/showOrderController/showAll">Show Detail</a></p>
+						<h3>0 order</h3>
+						<p>Show Detail</p>
 					</span>
             </li>
             <li>

@@ -80,16 +80,16 @@
     <form method="post" enctype="multipart/form-data" action="/catalogController/update">
         <label for="id">ID Catalog</label>
         <input type="number"  id="id" name="catalogId" value="${editCatalog.catalogId}" readonly>
-
         <label for="name">Catalog Name</label>
         <input id="name" type="text" name="catalogName" value="${editCatalog.catalogName}">
-
         <label for="description">Description</label>
         <input type="text" id="description" name="description" value="${editCatalog.description}">
         <label for="country">Country</label>
         <input type="text" id="country" name="country" value="${editCatalog.country}">
         <div class="form-group">
-            <label for="image">Image</label>
+            <label>Old URL Image</label>
+            <input type="text" value="${editCatalog.image}" readonly>
+            <label>New URL Image</label>
             <input type="file" class="form-control" id="image" name="image" value="${editCatalog.image}">
         </div>
         <button type="submit" >Update</button>

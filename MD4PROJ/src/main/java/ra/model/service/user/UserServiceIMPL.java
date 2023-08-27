@@ -41,14 +41,16 @@ public class UserServiceIMPL implements IUserService {
 
     @Override
     public boolean save(User user) {
-        Connection conn = null;
+        Connection conn;
         try {
             conn = ConnectionDB.getConnection();
-            CallableStatement call = conn.prepareCall("{call PROC_register(?,?,?,?)}");
+            CallableStatement call = conn.prepareCall("{call PROC_register(?,?,?,?,?)}");
             call.setString(1, user.getUserName());
             call.setString(2, user.getEmail());
             call.setString(3,user.getPassword());
             call.setString(4,"USER");
+            call.setBoolean(5, true);
+
             call.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();

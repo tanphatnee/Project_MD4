@@ -36,7 +36,7 @@
             <div class="col-md-6 d-flex align-items-center">
                 <p class="mb-0 phone pl-md-2">
                     <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +037 874 0576</a>
-                    <a href="#"><span class="fa fa-paper-plane mr-1"></span> nvtphat2k4@email.com</a>
+                    <a href="#"><span class="fa fa-paper-plane mr-1"></span> nvtphat2k4@gmail.com</a>
                 </p>
             </div>
             <div class="col-md-6 d-flex justify-content-md-end">
@@ -81,8 +81,6 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <%--                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>--%>
-                <%--                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--%>
                 <c:if test="${userLogin!=null}">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
@@ -193,7 +191,7 @@
                 <div class="col-lg-2 col-md-4 ">
                     <div class="sort w-100 text-center ftco-animate">
                         <a href="<%=request.getContextPath()%>/productController/searchByCatalogId?catalogId=${catalog.catalogId}"><div
-                                class="img" style="background-image: url(/images/${catalog.image});"></div></a>
+                                class="img" style="background-image: url(/upload/${catalog.image});"></div></a>
                         <h3>${catalog.catalogName}</h3>
                     </div>
                 </div>

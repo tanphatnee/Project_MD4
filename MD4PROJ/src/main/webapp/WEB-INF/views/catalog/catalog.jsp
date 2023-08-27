@@ -185,6 +185,9 @@
             margin-top: 10px;
             font-size: 13px;
         }
+        a{
+            color: #606060;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -200,7 +203,7 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Catalog <b>Management</b></h2>
-                        <h3><a href="<%=request.getContextPath()%>/adminController/goAdmin"><b style="color: #0f6674">Admin</b></a></h3>
+                        <h4><a href="<%=request.getContextPath()%>/adminController/goAdmin"><b style="color: #0f6674">Back To Admin</b></a></h4>
                     </div>
                     <div class="col-sm-7">
                         <a href="<%=request.getContextPath()%>/catalogController/create" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Catalog</span></a>
