@@ -239,7 +239,6 @@
                     <th>ProductName</th>
                     <th>price</th>
                     <th>Quantity</th>
-                    <th>Date Order</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -252,11 +251,8 @@
                         <td>${order.productName}</td>
                         <td>${order.price}</td>
                         <td>${order.quantity}</td>
-                        <td>${order.dateBuy}</td>
                     </tr>
                 </c:forEach>
-
-
                 </tbody>
             </table>
 

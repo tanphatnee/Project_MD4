@@ -3,10 +3,7 @@ package ra.model.service.user;
 import ra.model.entity.User;
 import ra.util.ConnectionDB;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,17 +150,17 @@ call.executeUpdate();
         Connection conn = null;
         try {
             conn = ConnectionDB.getConnection();
-            CallableStatement call = conn.prepareCall("{call PROC_checkUserNameExits(?)}");
-            call.setString(1,userName);
-            ResultSet resultSet = call.executeQuery();
-            if (resultSet.next()){
-                return true;
-            }
-        } catch (Exception e){
+            CallableStatement call = conn.prepareCall("{call PROC_checkUserNameExits(?, ?)}");
+            call.setString(1, userName);
+            call.registerOutParameter(2, Types.TINYINT);  // Đăng ký tham số đầu ra
+            call.execute();
+
+            int userExists = call.getInt(2);  // Lấy giá trị tham số đầu ra
+            return userExists == 1;
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-        return false;
     }
 
     @Override
@@ -171,17 +168,16 @@ call.executeUpdate();
         Connection conn = null;
         try {
             conn = ConnectionDB.getConnection();
-            CallableStatement call = conn.prepareCall("{call PROC_checkEmailExits(?)}");
+            CallableStatement call = conn.prepareCall("{call PROC_checkEmailExits(?,?)}");
             call.setString(1,email);
-            ResultSet resultSet = call.executeQuery();
-            if (resultSet.next()){
-                return true;
-            }
+            call.registerOutParameter(2, Types.TINYINT);  // Đăng ký tham số đầu ra
+            call.execute();
+            int emailExists = call.getInt(2);  // Lấy giá trị tham số đầu ra
+            return emailExists == 1;
         } catch (Exception e){
             e.printStackTrace();
             return false;
         }
-        return false;
     }
 
     @Override
